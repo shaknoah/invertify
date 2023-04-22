@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Inverter Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        h1 {
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+        
+        .pdf-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .pdf-link {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        
+        .pdf-link:hover {
+            background-color: #0062cc;
+        }
+    </style>
+</head>
+<body>
+    <h1>PDF Inverter Results</h1>
+    <p>Your PDF has been inverted. Use the links below to view or download the inverted PDF:</p>
+    
+    <div class="pdf-links">
+        <a href="{{ url_for('view_pdf') }}" class="pdf-link">View in Browser</a>
+        <a href="{{ url_for('download_pdf') }}" class="pdf-link">Download</a>
+    </div>
+</body>
+</html>

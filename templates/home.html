@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Inverter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            background-color: #f2f2f2;
+        }
+        
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        form {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        input[type="file"] {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        button[type="submit"] {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #0062cc;
+        }
+        
+        .error {
+            color: red;
+            margin-top: 20px;
+        }
+        
+        .inverted-pdf {
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        
+        .pdf-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .pdf-link {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .pdf-link:hover {
+            background-color: #0062cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="logo">PDF Inverter</h1>
+        <img src="/imgsrc.png"  width="50">
+    </div>
+
+    <form method="post" enctype="multipart/form-data">
+        <label for="file">Upload a PDF File:</label>
+        <input type="file" name="file" id="file">
+        <button type="submit">Invert Colors</button>
+    </form>
+    
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    
+    {% if pdf_data %}
+        <div class="inverted-pdf">
+            <h2>Inverted PDF</h2>
+            <div class="pdf-links">
+                <a href="{{ url_for('view_pdf') }}" class="pdf-link">View in Browser</a>
+                <a href="{{ url_for('download_pdf') }}" class="pdf-link">Download</a>
+            </div>
+        </div>
+    {% else %}
+        <p>No file has been uploaded yet.</p>
+    {% endif %}
+</body>
+</html>
